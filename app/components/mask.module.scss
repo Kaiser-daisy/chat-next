@@ -60,6 +60,7 @@
       .mask-header {
         display: flex;
         align-items: center;
+        max-width: calc(100% - 105px);
 
         .mask-icon {
           display: flex;
@@ -76,6 +77,7 @@
           .mask-info {
             font-size: 12px;
           }
+          max-width: calc(100% - 30px);
         }
       }
 
