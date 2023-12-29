@@ -6,30 +6,23 @@ import React, {
   useMemo,
   Fragment,
 } from "react";
-
+import Image from "next/image";
 import SendWhiteIcon from "../icons/send-white.svg";
-import BrainIcon from "../icons/brain.svg";
-import ExportIcon from "../icons/share.svg";
 import ReturnIcon from "../icons/return.svg";
 import CopyIcon from "../icons/copy.svg";
 import LoadingIcon from "../icons/three-dots.svg";
-import PromptIcon from "../icons/prompt.svg";
 import MaskIcon from "../icons/mask.svg";
 import MaxIcon from "../icons/max.svg";
 import MinIcon from "../icons/min.svg";
 import ResetIcon from "../icons/reload.svg";
-import BreakIcon from "../icons/break.svg";
-import SettingsIcon from "../icons/chat-settings.svg";
-import EditIcon from "../icons/rename.svg";
 import ConfirmIcon from "../icons/confirm.svg";
 import CancelIcon from "../icons/cancel.svg";
 
-import LightIcon from "../icons/light.svg";
-import DarkIcon from "../icons/dark.svg";
-import AutoIcon from "../icons/auto.svg";
 import BottomIcon from "../icons/bottom.svg";
 import StopIcon from "../icons/pause.svg";
-import RobotIcon from "../icons/robot.svg";
+import UserAvatatIcon from "../icons/userAvatar.png";
+import SystemAvatatIcon from "../icons/system.png";
+
 
 import {
   ChatMessage,
@@ -64,7 +57,6 @@ import {
   List,
   ListItem,
   Modal,
-  Selector,
   showConfirm,
   showToast,
 } from "./ui-lib";
@@ -76,8 +68,7 @@ import {
   REQUEST_TIMEOUT_MS,
   UNFINISHED_INPUT,
 } from "../constant";
-import { Avatar } from "./emoji";
-import { ContextPrompts, MaskAvatar, MaskConfig } from "./mask";
+import { ContextPrompts, MaskConfig } from "./mask";
 import { useMaskStore } from "../store/mask";
 import { ChatCommandPrefix, useChatCommand, useCommand } from "../command";
 import { prettyObject } from "../utils/format";
@@ -921,20 +912,9 @@ function _Chat() {
                   <div className={styles["chat-message-header"]}>
                     <div className={styles["chat-message-avatar"]}>
                       {isUser ? (
-                        <Avatar avatar={config.avatar} />
+                        <Image alt="icon" src={UserAvatatIcon} width={18} height={18} />
                       ) : (
-                        <>
-                          {["system"].includes(message.role) ? (
-                            <Avatar avatar="2699-fe0f" />
-                          ) : (
-                            <MaskAvatar
-                              avatar={session.mask.avatar}
-                              model={
-                                message.model || session.mask.modelConfig.model
-                              }
-                            />
-                          )}
-                        </>
+                        <Image alt="icon" src={SystemAvatatIcon} width={22} height={22} />
                       )}
                     </div>
 
